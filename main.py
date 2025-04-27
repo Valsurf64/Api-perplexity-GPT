@@ -21,7 +21,7 @@ def search():
     }
 
     payload = {
-        "model": "pplx-7b-chat",  # modèle corrigé
+        "model": "pplx-70b-chat",
         "messages": [
             {"role": "user", "content": f"Donne-moi {nombre_de_resultats} tendances sur : {mot_cle}"}
         ]
