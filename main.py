@@ -3,9 +3,9 @@ from flask_cors import CORS
 import requests
 
 app = Flask(__name__)
-CORS(app)  # Activation du CORS pour autoriser les appels publics
+CORS(app)
 
-# Remplacer par ta clé API Perplexity valide
+# Ta clé API Perplexity
 PERPLEXITY_API_KEY = "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"
 
 PERPLEXITY_API_URL = "https://api.perplexity.ai/chat/completions"
@@ -21,7 +21,7 @@ def search():
     }
 
     payload = {
-        "model": "pplx-7b-chat",  # Remplacé pour un modèle plus stable si besoin
+        "model": "pplx-7b-online",  # << On remet ton modèle original ici
         "messages": [
             {"role": "user", "content": f"Donne-moi {nombre_de_resultats} tendances sur : {mot_cle}"}
         ]
