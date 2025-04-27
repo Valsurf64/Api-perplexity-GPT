@@ -6,17 +6,12 @@ app = Flask(__name__)
 CORS(app)
 
 # Ta clé API Perplexity
-PERPLEXITY_API_KEY = "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"
-SECRET_TOKEN = "Guizmo"
+PERPLEXITY_API_KEY = "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"
 
 PERPLEXITY_API_URL = "https://api.perplexity.ai/chat/completions"
 
 @app.route('/search', methods=['GET'])
 def search():
-    token = request.args.get('secret_token')
-    if token != SECRET_TOKEN:
-        return jsonify({"error": "Unauthorized access. Invalid token."}), 401
-
     mot_cle = request.args.get('mot_cle')
     nombre_de_resultats = request.args.get('nombre_de_resultats', 5)
 
@@ -26,7 +21,7 @@ def search():
     }
 
     payload = {
-        "model": "pplx-7b-chat",
+        "model": "pplx-7b-chat",  # modèle corrigé
         "messages": [
             {"role": "user", "content": f"Donne-moi {nombre_de_resultats} tendances sur : {mot_cle}"}
         ]
