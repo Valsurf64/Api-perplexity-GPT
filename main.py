@@ -21,7 +21,7 @@ def search():
     }
 
     payload = {
-        "model": "pplx-7b-online",  # << On remet ton modèle original ici
+        "model": "pplx-7b-online",
         "messages": [
             {"role": "user", "content": f"Donne-moi {nombre_de_resultats} tendances sur : {mot_cle}"}
         ]
@@ -33,7 +33,11 @@ def search():
         data = response.json()
         return jsonify(data)
     else:
-        return jsonify({"error": f"Erreur API Perplexity : {response.status_code} - {response.text}"}), response.status_code
+        return jsonify({
+            "error": "Erreur API Perplexity",
+            "status_code": response.status_code,
+            "response_text": response.text
+        }), response.status_code
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080)
