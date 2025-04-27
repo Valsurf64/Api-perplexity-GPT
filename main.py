@@ -25,7 +25,7 @@ def search():
         "Content-Type": "application/json"
     }
 
-   response = requests.request("GET", url, headers=headers)
+    response = requests.request("GET", url, headers=headers)
 
     if response.status_code == 200:
         data = response.json()
